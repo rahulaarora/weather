@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather</title> 
+</head>
+<body>
+    <h1> Weather.AI </h1>
+    <p>This interactive bot is dedicated to tell the weather of your location!</p>
+    <pre>::name Weather.AI
+::category Weather
+::language en
+::author Rahul Arora
+::author_url https://github.com/rahulaarora
+::description It is good app to know weather of your location ! 
+::dynamic_content <Yes/No>
+::developer_privacy_policy <link>
+::image images/category_weather_500x500.png
+::terms_of_use <link>
+
+
+User query1|query2|quer3....
+#weather statement
+define weather|Define weather|define weather?|definition of weather
+The state of the atmosphere at a particular place and time as regards heat, cloudiness, dryness, sunshine, wind, rain, etc.
+
+#conversation
+hi|hello|hey there|what's up
+Hi! What can I do for you?
+
+what is your name|what's your name|name
+My name is Weather.AI
+
+weather|weather today|weather tomorrow|what is the weather|how is the weather|weather inside|weather outside|weather near me|weather yesterday|weather in my area|weather in my location|will it be cloudy weather today ||Is it cloudy today |Is weather cloudy today |Will there be hail|Will there be hail today |Will it hail |will it hail today |Will it be hailing today |Will it be hailing |will it be hailing weather |will it be hailing weather today |Is it hailing |Is it hailing today |Is weather clear |Is weather clear today |Will there be snow |Will there be snow today |Will there be snow |Will it snow |will it snow today |Will it be snowing today |Will it be snowing |will it be snowing weather today |will it be snowing weather|Is it snowing today|Is it snowing
+Please specify the location!
+
+#future weather
+weather tomorrow in *|what is the weather tomorrow in *|what is the temperature tomorrow in *|how's the weather tomorrow in *|how is the weather tomorrow in *
+!example:how is the weather tomorrow in london
+!console:Tomorrow highest temperature will be `fahrenheit to celsius $high$` degree celcius in $1$
+{
+"url":"https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22$1$%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+"path":"$.query.results.channel.item.forecast[1]"
+}
+eol
+
+weather in * tomorrow|what is weather in * tomorrow|what will be the weather in * tomorrow|what is weather report of * tomorrow|Give me weather report of * tomorrow|Tell me about weather of * tomorrow|Tell me about about weather in * tomorrow|* weather tomorrow| * weather report tomorrow|tomorrow weather report of *|weather report of * tomorrow|Will there be clouds tomorrow in *|Will it be cloudy tomorrow in *|will it be cloudy weather tomorrow in *||Is it cloudy tomorrow in *|Is weather cloudy tomorrow in *|Will there be hail tomorrow in *|will it hail tomorrow in *|Will it be hailing tomorrow *|will it be hailing weather tomorrow in *|Is it hailing tomorrow in * |Is weather clear tomorrow in * |Will there be snow tomorrow in *|will it snow tomorrow in *|Will it be snowing tomorrow in *|will it be snowing weather tomorrow in * |Is it snowing tomorrow in *|Will it rain tomorrow in * |Will it be raining tomorrow in *|Are there any chances of rain tomorrow in *|can it rain tomorrow in *|will it rain tomorrow in *|will there be rain tomorrow in *|weather tomorrow in *
+I think it will be $text$ tomorrow in $1$!
+{
+"url":"https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22$1$%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+"path":"$.query.results.channel.item.forecast[1]"
+}
+eol
+
+#today weather
+weather in *|what is weather in *|what is the weather in *|what is weather report of *|Give me weather report of *|Tell me about weather of *|Tell me about about weather in *|* weather| * weather report|weather forecast of *|* weather forecast|How's the weather in *|How is the weather in *|How's the weather like in *|How is the weather like in *|weather in * today|what is weather in * today|what will be the weather in * today|what is weather report of * today|Give me weather report of * today|Tell me about weather of * today|Tell me about about weather in * today|* weather today| * weather report today|today weather report of *|weather report of * today
+!example:Give me weather report of New York
+!console:I think it will be $text$ in $1$
+{
+"url":"https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22$1$%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+"path":"$.query.results.channel.item.condition"
+}
+eol</pre>
+    <p>Made with <a href="http://fossasia.org">FOSSASIA</a> <a href="http://skills.susi.ai">SUSI.AI</a></p>
+    <!-- your SUSI.AI generated script here -->
+    <script type='text/javascript' id='susi-bot-script' data-userid='62b27bd49456673c09e17c00a2caebdf' data-group='Weather' data-language='en' data-skill='Weather.AI' src='https://skills.susi.ai/susi-chatbot.js'></script>
+    
+</body>
+</html>
